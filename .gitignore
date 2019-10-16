@@ -1,3 +1,10 @@
+.env
+/.idea
+/_logs
+travis/pip.conf
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
