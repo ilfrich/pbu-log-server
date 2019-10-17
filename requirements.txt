@@ -1,5 +1,5 @@
 flask
 python-dotenv
 pycodestyle
-python-basic-utils==0.3.0
+python-basic-utils==0.3.3
 requests

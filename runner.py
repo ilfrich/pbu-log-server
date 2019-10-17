@@ -12,7 +12,7 @@ def extract_auth_token():
 
 if __name__ == '__main__':
     # initialise logger
-    logger = Logger("MAIN", log_folder=get_log_folder())
+    logger = Logger("MAIN", log_folder=get_log_folder(), enable_logger_name=False)
     logger.info("==========================================")
     logger.info("           Starting Log Server")
     logger.info("==========================================")
@@ -30,7 +30,7 @@ if __name__ == '__main__':
             abort(401)
 
         def _format_message(msg):
-            return "[{}] {}".format(msg.name, msg.msg)
+            return "{} {}".format(msg.name, msg.msg)
 
         message = JSON(request.get_json())
         if message.levelname == "INFO":

@@ -1,0 +1,17 @@
+sudo: required
+language: python
+python:
+- 3.6
+group: bluezone
+services:
+  - docker
+install:
+- touch .env
+- pip3 install pycodestyle
+- make lint
+script:
+- sh travis/deploy.sh
+#- make build push
+branches:
+  only:
+    - master
