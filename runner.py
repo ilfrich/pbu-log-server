@@ -1,6 +1,7 @@
 from flask import Flask, request, abort, jsonify
 from pbu import Logger, JSON
 from config import get_log_folder, get_port, get_auth_token
+from logging import LogRecord
 
 
 def extract_auth_token():
@@ -29,20 +30,12 @@ if __name__ == '__main__':
         if auth_token is not None and auth_token != extract_auth_token():
             abort(401)
 
-        def _format_message(msg):
-            return "{} {}".format(msg.name, msg.msg)
-
         message = JSON(request.get_json())
-        if message.levelname == "INFO":
-            logger.info(_format_message(message))
-        elif message.levelname == "ERROR":
-            logger.error(_format_message(message))
-        elif message.levelname == "WARN":
-            logger.warn(_format_message(message))
-        elif message.levelname == "DEBUG":
-            logger.debug(_format_message(message))
-
+        lr = LogRecord(message.name, message.levelno, message.pathname, message.lineno,
+                       message.msg, message.args, None)
+        logger.handle(lr)
         return jsonify({"status": True})
 
+
     # start flask app
-    app.run(host='0.0.0.0', port=get_port())
+    app.run(host='0.0.0.0', port=get_port(), debug=False)

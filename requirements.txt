@@ -1,5 +1,4 @@
 flask
 python-dotenv
 pycodestyle
-python-basic-utils==0.3.3
-requests
+pbu==0.4.0
