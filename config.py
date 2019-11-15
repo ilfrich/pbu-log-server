@@ -1,5 +1,7 @@
 from dotenv import load_dotenv
 import os
+import logging
+import warnings
 
 
 DEFAULTS = {
@@ -7,6 +9,14 @@ DEFAULTS = {
     "LOG_FOLDER": "_logs",  # folder where to log the log files
     "AUTH_TOKEN": None,  # no authentication required
     "PORT": 4999,  # default port
+    "ENABLED_LOG_LEVELS": "ERROR,INFO",
+}
+
+_NAME_TO_LOG_LEVEL = {
+    "ERROR": logging.ERROR,
+    "WARNING": logging.WARNING,
+    "INFO": logging.INFO,
+    "DEBUG": logging.DEBUG,
 }
 
 
@@ -51,3 +61,19 @@ def get_auth_token():
     if "AUTH_TOKEN" in config:
         return config["AUTH_TOKEN"]
     return None
+
+
+def get_enabled_log_levels():
+    config = load_config()
+    enabled = list(map(lambda x: x.strip(), config["ENABLED_LOG_LEVELS"].split(",")))
+
+    result = []
+    for log_level in enabled:
+        if log_level not in _NAME_TO_LOG_LEVEL:
+            warnings.warn("Provided invalid log level in 'ENABLED_LOG_LEVELS': {}".format(log_level))
+            continue
+        result.append(_NAME_TO_LOG_LEVEL[log_level])
+
+    if len(result) == 0:
+        warnings.warn("No log levels enabled. Log server will not log anything.")
+    return result
