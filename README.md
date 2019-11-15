@@ -83,3 +83,7 @@ logger.info("Hello log server")
 By providing `PBU_LOG_SERVER` to an application that uses `pbu`, it will ignore the `log_folder=` parameter passed to 
 the `pbu.Logger` when the logger is instantiated. It will also ignore the `PBU_LOG_FOLDER` environment variable passed 
 to your application.
+
+**Important Note**: Currently, when you use `logger.exception(message)`, the stack trace will be logged on your applications `stdout` 
+(`print(message)`). This is planned to be changed and the stack trace being logged into the log-server as well. Details
+in issue #1. 
