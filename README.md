@@ -1,7 +1,7 @@
 # PBU Log Server
 
 A small lightweight web server to receive log messages via an API and aggregates them into log files. This is a 
-companion repository to the Pip package [`python-basic-utils`](/ilfrich/python-basic-utils) (`pbu`).
+companion repository to the Pip package [`python-basic-utils`](https://github.com/ilfrich/python-basic-utils) (`pbu`).
 
 **Table of Contents**
 
@@ -40,8 +40,8 @@ aggregate those log messages in one place.
 ## What is the Log Server
 
 The log server is a lightweight Flask app, which offers only one POST endpoint to `/api/log`. The payload is of 
-`Content-Type: "application/json"` and contains the fields of a Python `logging` `LogRecord` object, containing keys 
-such as: `asctime`, `created`, `name`, `levelname`, `message` and more. See the keys created for `LogRecord.__dict__`
+`Content-Type: "application/json"` and contains the fields of a Python `logging.LogRecord` object, containing keys such 
+as: `asctime`, `created`, `name`, `levelname`, `message` and more. See the keys created for `LogRecord.__dict__`
 
 The log server will create log files `info.log`, `error.log`, `warning.log` and `debug.log` depending on which logging 
 levels are activated.
