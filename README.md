@@ -86,4 +86,5 @@ to your application.
 
 **Important Note**: Currently, when you use `logger.exception(message)`, the stack trace will be logged on your applications `stdout` 
 (`print(message)`). This is planned to be changed and the stack trace being logged into the log-server as well. Details
-in issue #1. 
+in issue [#1](https://github.com/ilfrich/pbu-log-server/issues/1).
+ 
