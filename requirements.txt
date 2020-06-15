@@ -1,4 +1,4 @@
 flask
 python-dotenv
 pycodestyle
-pbu==0.5.0
+pbu==0.6.6
