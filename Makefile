@@ -2,13 +2,13 @@ SHELL:=/bin/bash
 include .env
 
 start:
-	python3 runner.py
+	python runner.py
 
 clean:
 	rm -f _logs/*.log*
 
 install-deps:
-	sudo pip3 install -r requirements.txt
+	sudo pip install -r requirements.txt
 
 check-lint:
 	find . -name '*.py' | while read file; do \
@@ -21,5 +21,5 @@ lint:
 	    if [[ $$? != 0 ]]; then exit $$?; fi \
 	done; \
 
-local-build:
-	sudo make build
+docker-build:
+	docker build -t ilfrich/pbu-log-server .

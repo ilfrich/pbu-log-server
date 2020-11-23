@@ -39,10 +39,6 @@ def load_config():
         if key not in config or config[key] is None:
             config[key] = DEFAULTS[key]
 
-    # check if log folder exists
-    if not os.path.isdir(config["LOG_FOLDER"]):
-        os.mkdir(config["LOG_FOLDER"])
-
     return config
 
 

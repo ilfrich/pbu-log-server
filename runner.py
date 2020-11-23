@@ -13,7 +13,7 @@ def extract_auth_token():
 
 if __name__ == '__main__':
     # initialise logger
-    logger = Logger("MAIN", log_folder=get_log_folder(), enable_logger_name=False,
+    logger = Logger("MAIN", log_folder=get_log_folder(), enable_logger_name=True,
                     enabled_log_levels=get_enabled_log_levels())
     logger.info("==========================================")
     logger.info("           Starting Log Server")
@@ -33,8 +33,14 @@ if __name__ == '__main__':
             abort(401)
 
         message = JSON(request.get_json())
+
+        msg = message.msg
+        if "trace" in message and message.trace is not None and isinstance(message.trace, list):
+            trace = "\n".join(message.trace)
+            msg = f"{msg}\n{trace}"
+
         lr = LogRecord(message.name, message.levelno, message.pathname, message.lineno,
-                       message.msg, message.args, None)
+                       msg, message.args, None)
         logger.handle(lr)
         return jsonify({"status": True})
 
