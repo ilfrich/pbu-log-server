@@ -9,7 +9,7 @@ COPY runner.py .
 COPY requirements.txt .
 
 # install dependencies
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 # start server
 ENTRYPOINT ["python3"]
