@@ -133,7 +133,7 @@ class AdvancedLogger:
 
                     current_message = {
                         "ts": round(log_dt.timestamp()),
-                        "name": message_tokens[2][1:-1],
+                        "name": message_tokens[2],
                         "msg": " ".join(message_tokens[3:]).replace("\n", "")
                     }
                     continue
