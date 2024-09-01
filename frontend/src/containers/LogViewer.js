@@ -77,9 +77,7 @@ const style = {
 
 const DT_DISPLAY_FORMAT = "dd/MM/yy T:ss"
 
-const transposeDate = (timestamp, timezone) => {
-    return DateTime.fromSeconds(timestamp).setZone(timezone).toFormat(DT_DISPLAY_FORMAT)
-}
+const transposeDate = (timestamp, timezone) => DateTime.fromSeconds(timestamp).setZone(timezone).toFormat(DT_DISPLAY_FORMAT)
 
 class LogViewer extends React.Component {
 
@@ -324,7 +322,6 @@ class LogViewer extends React.Component {
                     </div>
                 </div>
                 
-
                 <div style={mixins.vSpacer(10)} />
 
                 <div style={style.table(0)}>
@@ -336,7 +333,7 @@ class LogViewer extends React.Component {
                 </div>
                 {this.getFilteredLogMessages().map((msg, idx) => (
                     <div key={`${msg.timestamp}-${idx}`} style={style.table(idx)}>
-                        <div style={mixins.center}>{transposeDate(msg.ts)}</div>
+                        <div style={mixins.center}>{transposeDate(msg.ts, this.state.timezone)}</div>
                         <div style={mixins.center}>
                             <div style={style.logLevel(constants.LOG_COLOR[msg.level])}>{msg.level}</div>
                         </div>

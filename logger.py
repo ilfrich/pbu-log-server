@@ -159,7 +159,6 @@ class AdvancedLogger:
         return os.path.join(self.log_folder, f"{log_level.lower()}_{log_suffix}.log")
 
     def _init_logger(self, interval: datetime, log_level: str):
-
         if log_level in self._log_intervals and self._log_intervals[log_level] is not None and self._log_intervals != interval:
             self._close_logger(log_level)
         
@@ -174,7 +173,7 @@ class AdvancedLogger:
         self._log_intervals[log_level] = interval
 
     def _close_logger(self, log_level: str):
-        if self._log_files[log_level] is None:
+        if log_level not in self._log_files:
             return  # nothing to do
         
         self._log_files[log_level].close()
