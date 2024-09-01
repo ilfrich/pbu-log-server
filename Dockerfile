@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.11
 
 # declare app directory
 WORKDIR /app
@@ -6,11 +6,12 @@ WORKDIR /app
 # copy python code
 COPY config.py .
 COPY runner.py .
+COPY logger.py .
 COPY requirements.txt .
 
 # install dependencies
-RUN pip3 install -r requirements.txt
+RUN pip3.11 install -r requirements.txt
 
 # start server
-ENTRYPOINT ["python3"]
+ENTRYPOINT ["python3.11"]
 CMD ["runner.py"]

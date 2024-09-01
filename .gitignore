@@ -2,8 +2,12 @@
 /.idea
 /_logs
 travis/pip.conf
+/node_modules
 
-
+# frontend related
+/static/*
+!/static/images
+/templates/index.html
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -109,3 +113,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+

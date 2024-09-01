@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>Log Viewer</title>
+	<link rel="icon" type="image/png" href="/static/images/favicon.png" />
+
+	<!-- global styles -->
+	<style type="text/css">
+        input.range[type=range] {
+            appearance: none;
+            margin: 0;
+            width: 100%;
+        }
+        input.range[type=range]:focus {
+            outline: none;
+        }
+        input.range[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #fff;
+            border-radius: 1.3px;
+            border: 0.2px solid #010101;
+        }
+        input.range[type=range]::-webkit-slider-thumb {
+            box-shadow: 1px 1px 1px #333, 0px 0px 1px #333;
+            border: 1px solid #333;
+            height: 18px;
+            width: 16px;
+            border-radius: 3px;
+            background: #ffffff;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -6px;
+        }
+        input.range[type=range]:focus::-webkit-slider-runnable-track {
+            background: #fff;
+        }
+        input.range[type=range]::-moz-range-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #fff;
+            border-radius: 1.3px;
+            border: 0.2px solid #010101;
+        }
+        input.range[type=range]::-moz-range-thumb {
+            box-shadow: 1px 1px 1px #333, 0px 0px 1px #333;
+            border: 1px solid #333;
+            height: 18px;
+            width: 16px;
+            border-radius: 3px;
+            background: #ffffff;
+            cursor: pointer;
+        }
+        input.range[type=range]::-ms-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: transparent;
+            border-color: transparent;
+            border-width: 16px 0;
+            color: transparent;
+        }
+        input.range[type=range]::-ms-fill-lower {
+            background: #2a6495;
+            border: 0.2px solid #010101;
+            border-radius: 2.6px;
+        }
+        input.range[type=range]::-ms-fill-upper {
+            background: #fff;
+            border: 0.2px solid #010101;
+            border-radius: 2.6px;
+        }
+        input.range[type=range]::-ms-thumb {
+            box-shadow: 1px 1px 1px #333, 0px 0px 1px #333;
+            border: 1px solid #333;
+            height: 18px;
+            width: 16px;
+            border-radius: 3px;
+            background: #ffffff;
+            cursor: pointer;
+        }
+        input.range[type=range]:focus::-ms-fill-lower {
+            background: #fff;
+        }
+        input.range[type=range]:focus::-ms-fill-upper {
+            background: #367ebd;
+        }
+
+        .js-plotly-plot svg.main-svg {
+            border-radius: 8px;
+        }
+	</style>
+</head>
+<body style="font-family: 'Helvetica Neue', 'Arial'; margin: 0">
+    <div id="root"></div>
+</body>
+</html>

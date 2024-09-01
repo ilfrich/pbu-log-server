@@ -2,7 +2,7 @@ SHELL:=/bin/bash
 include .env
 
 start:
-	python runner.py
+	python3.11 runner.py
 
 clean:
 	rm -f _logs/*.log*
@@ -23,3 +23,6 @@ lint:
 
 docker-build:
 	docker build -t ilfrich/pbu-log-server .
+
+deploy:
+	DEPLOY_SERVER=$(DEPLOY_SERVER) DEPLOY_USER=$(DEPLOY_USER) DEPLOY_APP=$(DEPLOY_APP) ./deploy.sh
