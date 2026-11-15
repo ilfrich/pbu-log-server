@@ -1,5 +1,5 @@
 flask
 python-dotenv
 pycodestyle
-pbu>=1.1.7
+pbu>=1.1.26
 pytz
