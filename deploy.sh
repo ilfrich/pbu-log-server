@@ -18,6 +18,9 @@ APP_DIR="$REMOTE:$BASE_DIR"
 STATIC_DIR="$APP_DIR/static"
 APP_DIR="$APP_DIR/"  # append trailing /
 
+# ensure to create main app directory and static dir (for index.js)
+ssh $REMOTE "mkdir -p $BASE_DIR/static"
+
 FOLDERS="api"
 for folder in $FOLDERS; do
     echo "- Synchronizing PBU Log Server folder: $folder"
@@ -30,9 +33,9 @@ scp $SCP_OPTIONS *.py $APP_DIR
 scp $SCP_OPTIONS requirements.txt $APP_DIR
 scp $SCP_OPTIONS Makefile $APP_DIR
 # frontend
-scp $SCP_OPTIONS templates $APP_DIR
+scp $SCP_OPTIONS templates $APP_DIR/
 # scp $SCP_OPTIONS static/images/* $STATIC_DIR/images/
-scp $SCP_OPTIONS static/index.js $STATIC_DIR
+scp $SCP_OPTIONS static/index.js $STATIC_DIR/
 
 # update dependencies
 echo "- Updating PBU Log Server External Dependencies"
